@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+// import './App.css';
+import { ChakraBaseProvider,  theme } from '@chakra-ui/react';
+import Register from './Components/Register';
+import Resetpassword from './Resetpassword/Resetpassword';
+import {BrowserRouter, Routes,Route} from "react-router-dom";
+import Login from './Login/login';
+import Home from './Pages/Home';
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraBaseProvider theme={theme}>
+      <BrowserRouter>
+
+      <Routes>
+
+        <Route />
+        <Route path="/Register"  element={<Register/>} /> 
+        <Route path="/login" element={ <Login/>}/>
+        <Route path="/Resetpassword" element={<Resetpassword/>}  />
+        <Route path="/Home" element={ <Home/>}/>
+
+      </Routes>
+
+
+      </BrowserRouter>
+    </ChakraBaseProvider>
   );
 }
 
