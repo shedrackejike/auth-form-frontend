@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {Box, Text, FormControl,FormLabel,Input, Flex,} from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios"
 function Register() {
 const [state,setState] = useState({
@@ -8,6 +8,7 @@ const [state,setState] = useState({
   password: '',
   email: ''
 })
+const route = useNavigate()
 
 const handleSubmit = async(event) => {
   event.preventDefault()
@@ -17,7 +18,10 @@ const handleSubmit = async(event) => {
       url: "http://localhost:8080/api/user/register",
       withCredentials: false,
       data: state,
-    });
+    })
+    if (response.status) {
+      route("/login")
+    }
     // window.location.reload()
   } catch(error) {
     console.log(error)
