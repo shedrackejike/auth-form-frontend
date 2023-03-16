@@ -1,9 +1,10 @@
-import { Box ,Text} from '@chakra-ui/react'
-import { FormControl,FormLabel,Input, Button} from "@chakra-ui/react";
 import React,{useState} from 'react'
+import {  FormControl,FormLabel,Input, Button,Box,Text} from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
+
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
-const Resetpassword = () => {
+const Loggerin = () => {
     const navigate = useNavigate()
   
     const [state,setState] = useState({
@@ -17,12 +18,12 @@ const Resetpassword = () => {
         console.log(state);
         const response = await axios({
           method: "post",
-          url: "http://localhost:8080/api/user/Resetpassword",
+          url: "http://localhost:8080/api/user/login",
           withCredentials: false,
           data: state,
         })
         if (response.status) {
-          navigate("/login")
+          navigate("/Home")
         }
         // window.location.reload()
       } catch(error) {
@@ -37,43 +38,44 @@ const Resetpassword = () => {
       });
       console.log(state);
     }
-
-
+    
+    
+    
+    
+    
+    
   return (
     <Box bgColor={'yellow.100'} w='100%' h={'100vh'}>
 
     <Box w={'27%'} margin='auto' bgColor={'white'}  h={'70%'}  bg={'white'}  mt='6' boxShadow='inner'  rounded='md' >
 
-            <Text textAlign={'center'} textColor='white' fontSize={'2xl'} bgColor={'blue'} h='12'>Resetpassword</Text>
+            <Text textAlign={'center'} textColor='white' fontSize={'2xl'} bgColor={'blue'} h='12'>Login</Text>
                 
        <Box  w='75%' margin={'auto'} mt='9' boxShadow='inner'  rounded='md' bg={'white'}  >
 
+       
+        <form onSubmit={handleSubmit}> 
 
-      <form onSubmit={handleSubmit}>
-
-      <FormControl >
-        <FormLabel> privous Password</FormLabel>
-        <Input type={'text'} name='prevous password' placeholder='enter password' value={state.password} onChange={handleChange}  />
+        <FormControl >
+        <FormLabel> EMAil address</FormLabel>
+        <Input type={'text'} name='email' placeholder='enter email' value={state.email} onChange={handleChange} />
         </FormControl>
 
 
         <FormControl >
-        <FormLabel> new password</FormLabel>
-        <Input type={'text'} name='new password' placeholder='enter password' value={state.password} onChange={handleChange}  />
+        <FormLabel> password </FormLabel>
+        <Input type={'text'} name='password' placeholder='enter password' value={state.password} onChange={handleChange} />
         </FormControl>
 
-        <FormControl >
-        <FormLabel>confirm password </FormLabel>
-        <Input type={'text'} name='confirm password' placeholder='confirm password' value={state.password} onChange={handleChange}  />
-        </FormControl>
+
 
         <Button  size="lg" bgColor='blue' h='8' w='30%'  justifyContent='center' display={'flex'} textColor='white'
             alignItems='center' margin={'auto'} mt='7' cursor={'pointer'} type='submit'>Login</Button>
+            
+            </form>
+            <Link to={"/register"}>register </Link>
 
-      </form>
-
-
-
+         <Link to= "/forgot" >forgot password</Link>
 
        </Box>
 
@@ -86,4 +88,4 @@ const Resetpassword = () => {
   )
 }
 
-export default Resetpassword
+export default Loggerin

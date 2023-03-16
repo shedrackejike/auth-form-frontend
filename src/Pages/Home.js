@@ -1,21 +1,30 @@
-import { Box,Image } from '@chakra-ui/react'
+import { Box,Flex,Image ,Button} from '@chakra-ui/react'
 import React from 'react'
 
 function Home() {
   return (
     <Box>
 
+<Image backgroundImage= {'./image/WhatsApp Image 2022-12-24 at 22.46.35.jpeg'}
+  height ='100%'
+  width = '100%'
+  background-position = 'center'
+  background-size = 'cover'/>
 
 
 
-   <Image
-    boxSize='100px'
-    w={'100%'}
-    h='5%'
-    objectFit='contain'
-    src='https://bit.ly/dan-abramov'
-    alt='Dan Abramov'
-  />
+<Flex  justifyContent={'space-between'}>
+
+<Button> logout</Button>
+
+
+<Button>Resetpassword</Button>
+
+  
+</Flex>
+ 
+
+  
 
 
   
@@ -23,4 +32,7 @@ function Home() {
   )
 }
 
+
+
 export default Home
+

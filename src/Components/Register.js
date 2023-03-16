@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Box, Text, FormControl,FormLabel,Input, Flex,} from "@chakra-ui/react";
+import {Box, Text, FormControl,FormLabel,Input,  Button} from "@chakra-ui/react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios"
 function Register() {
@@ -20,7 +20,7 @@ const handleSubmit = async(event) => {
       data: state,
     })
     if (response.status) {
-      route("/login")
+      route("/Login")
     }
     // window.location.reload()
   } catch(error) {
@@ -48,17 +48,45 @@ const handleChange = (event) => {
 
             <Text textAlign={'center'} textColor='white' fontSize={'2xl'} bgColor={'blue'} h='12'>Register</Text>
                 
-       <Box  w='75%' margin={'auto'} mt='9' boxShadow='inner'  rounded='md' bg={'red'}  >
+       <Box  w='75%' margin={'auto'} mt='9' boxShadow='inner'  rounded='md' bg={'white'}  >
 
       <form onSubmit={handleSubmit}>
-        <Flex border={"1px solid"}>Username<input name='name'value={state.name} onChange={handleChange}/></Flex>
-        <Flex border={"1px solid"}>Email<input name='email' value={state.email} onChange={handleChange}/></Flex>
-        <Flex border={"1px solid"}>Password<input name='password' value={state.password} onChange={handleChange}/></Flex>
-        <button type='submit'> Save me</button>
-      </form>
 
-        <Box bgColor='blue' h='8' w='30%'  justifyContent='center' display={'flex'} textColor='white'
-            alignItems='center' margin={'auto'} mt='7' cursor={'pointer'}> register</Box>
+
+
+      <FormControl >
+        <FormLabel> Username</FormLabel>
+        <Input type={'text'} name='name' placeholder='enter name'  value={state.name} onChange={handleChange} />
+        </FormControl>
+
+        
+
+
+
+        <FormControl >
+        <FormLabel> Email</FormLabel>
+        <Input type={'text'} name='email' placeholder='enter email' value={state.email} onChange={handleChange} />
+        </FormControl>
+
+
+
+
+
+        <FormControl >
+        <FormLabel> Password</FormLabel>
+        <Input type={'text'} name='password' placeholder='enter password' value={state.password} onChange={handleChange} />
+        </FormControl>           
+
+
+
+
+
+        <Button  size="lg" bgColor='blue' h='8' w='30%'  justifyContent='center' display={'flex'} textColor='white'
+            alignItems='center' margin={'auto'} mt='7' cursor={'pointer'} type='submit'>Register</Button>
+
+
+     
+            </form>
 
         <p >Already registered? click <Link to= "/login" >here to login</Link></p>
 
